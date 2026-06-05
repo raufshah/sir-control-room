@@ -162,8 +162,9 @@ useEffect(() => {
 const fetchComplaints = async () => {
   try {
     const response = await axios.get(
-      "https://sir-control-room-backend.onrender.com/api/complaints"
-    );
+  `https://sir-control-room-backend.onrender.com/api/complaints/track/${complaintId}`
+);
+    
 
     setComplaints(response.data);
   } catch (error) {
