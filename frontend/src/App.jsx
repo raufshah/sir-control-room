@@ -106,7 +106,7 @@ const handleSubmit = async (e) => {
     }
 
     const response = await axios.post(
-      "http://localhost:5000/api/complaints",
+      "https://sir-control-room-backend.onrender.com/api/complaints",
       data
     );
 
@@ -131,7 +131,7 @@ const handleSubmit = async (e) => {
 const updateStatus = async (id) => {
   try {
     await axios.put(
-      `http://localhost:5000/api/complaints/${id}`,
+      `https://sir-control-room-backend.onrender.com//api/complaints/${id}`,
       {
         status: "Resolved",
       }
@@ -146,7 +146,7 @@ const updateStatus = async (id) => {
 const trackComplaint = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/complaints/track/${trackingId}`
+      `https://sir-control-room-backend.onrender.com//api/complaints/track/${trackingId}`
     );
 
     setTrackingResult(response.data);
@@ -162,7 +162,7 @@ useEffect(() => {
 const fetchComplaints = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/complaints"
+      "https://sir-control-room-backend.onrender.com//api/complaints"
     );
 
     setComplaints(response.data);
@@ -198,7 +198,7 @@ const categories = [
 
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/admin/login",
+      "https://sir-control-room-backend.onrender.com//api/admin/login",
       loginData
     );
 
@@ -1000,7 +1000,7 @@ return (
 <td>
   {complaint.document ? (
     <a
-      href={`http://localhost:5000/uploads/${complaint.document}`}
+      href={`https://sir-control-room-backend.onrender.com//uploads/${complaint.document}`}
       target="_blank"
       rel="noreferrer"
       className="bg-blue-600 text-white px-3 py-1 rounded text-sm"
