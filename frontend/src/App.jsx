@@ -198,7 +198,7 @@ const categories = [
 
   try {
     const response = await axios.post(
-      "https://sir-control-room-backend.onrender.com//api/admin/login",
+      "https://sir-control-room-backend.onrender.com/api/admin/login",
       loginData
     );
 
