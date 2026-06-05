@@ -131,7 +131,7 @@ const handleSubmit = async (e) => {
 const updateStatus = async (id) => {
   try {
     await axios.put(
-      `https://sir-control-room-backend.onrender.com//api/complaints/${id}`,
+      `https://sir-control-room-backend.onrender.com/api/complaints/${id}`,
       {
         status: "Resolved",
       }
