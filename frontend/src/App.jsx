@@ -551,31 +551,26 @@ function ComplaintPage({
 ></textarea>
           </div>
 
-          <div className="mt-6 border-2 border-dashed border-slate-300 rounded-2xl p-8 bg-slate-50 text-center">
-            <p className="text-slate-500">
-              Upload supporting documents here.
-            </p>
-          </div>
-
-          <div className="mt-8 flex justify-end">
-            <div className="mt-4">
-  <label className="block text-sm font-semibold mb-2">
+          <div className="mt-6 border-2 border-dashed border-slate-300 rounded-2xl p-6 bg-slate-50">
+  <label className="block text-sm font-semibold mb-3">
     Upload Document (PDF, JPG, PNG)
   </label>
 
   <input
-  type="file"
-  onChange={(e) => setSelectedFile(e.target.files[0])}
-  className="w-full border border-slate-300 rounded-xl px-4 py-3"
-/>
+    type="file"
+    onChange={(e) => setSelectedFile(e.target.files[0])}
+    className="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white"
+  />
 </div>
-           <button
-  type="submit"
-  className="bg-blue-700 text-white px-8 py-3 rounded-xl"
->
-  Submit Complaint
-</button>
-          </div>
+
+<div className="mt-6">
+  <button
+    type="submit"
+    className="w-full sm:w-auto bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-xl font-semibold transition"
+  >
+    Submit Complaint
+  </button>
+</div>
           </form>
         </div>
 
@@ -844,8 +839,8 @@ const filteredComplaints = complaints.filter((complaint) => {
 });
 
 return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
        <StatCard
   title="Total Complaints"
   value={complaints.length}
@@ -869,13 +864,14 @@ return (
       </div>
 
       <div className="mt-10 bg-white rounded-3xl shadow-lg p-8 overflow-auto">
-        <div className="flex justify-between items-center mb-6">
+       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
           <div className="bg-white rounded-3xl shadow-lg p-6 mb-8">
   <h3 className="text-2xl font-bold mb-4">
     Complaint Status Overview
   </h3>
 
   <div style={{ width: "100%", height: 300 }}>
+    <div className="h-[300px] sm:h-[400px]">
     <ResponsiveContainer>
       <PieChart>
         <Pie
@@ -896,6 +892,7 @@ return (
         <Tooltip />
       </PieChart>
     </ResponsiveContainer>
+  </div>
   </div>
 </div>
 <div className="bg-white rounded-3xl shadow-lg p-6 mb-8">
@@ -926,7 +923,7 @@ return (
     Recent Complaints
   </h2>
 
-  <div className="flex gap-3">
+ <div className="flex flex-wrap gap-3">
   <button
     onClick={exportToExcel}
     className="bg-green-600 text-white px-4 py-2 rounded-xl"
@@ -974,14 +971,8 @@ return (
 
 </div>
 
-<input
-  type="text"
-  placeholder="Search Complaint ID, Name or Mobile"
-  value={searchTerm}
-  onChange={(e) => setSearchTerm(e.target.value)}
-  className="w-full p-3 mb-4 border rounded-xl"
-/>
 
+<div className="overflow-x-auto">
 <table className="w-full min-w-[700px]">
   <thead>
     <tr className="border-b border-slate-200 text-left">
@@ -1029,7 +1020,7 @@ return (
 <td>
   {complaint.document ? (
     <a
-      href={`https://sir-control-room-backend.onrender.com//uploads/${complaint.document}`}
+      href={`https://sir-control-room-backend.onrender.com/uploads/${complaint.document}`}
       target="_blank"
       rel="noreferrer"
       className="bg-blue-600 text-white px-3 py-1 rounded text-sm"
@@ -1049,6 +1040,7 @@ return (
     ))}
   </tbody>
 </table>
+</div>
       </div>
     </section>
   );
