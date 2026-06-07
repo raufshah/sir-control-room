@@ -64,7 +64,7 @@ const exportToExcel = () => {
   );
 };
 const [isLoggedIn, setIsLoggedIn] = useState(
-  localStorage.getItem("isLoggedIn") === "true"
+  !!localStorage.getItem("token")
 );
 
 const [loginData, setLoginData] = useState({
@@ -205,15 +205,19 @@ const categories = [
 
     alert(response.data.message);
 
-    setIsLoggedIn(true);
-    localStorage.setItem("isLoggedIn", "true");
+localStorage.setItem(
+  "token",
+  response.data.token
+);
+
+setIsLoggedIn(true);
 
   } catch (error) {
     alert("Invalid Credentials");
   }
 };
 const handleLogout = () => {
-  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("token");
   setIsLoggedIn(false);
 };
 
