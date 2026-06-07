@@ -954,6 +954,14 @@ return (
 
 </div>
 
+<input
+  type="text"
+  placeholder="Search Complaint ID, Name or Mobile"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  className="w-full p-3 mb-4 border rounded-xl"
+/>
+
 <table className="w-full min-w-[700px]">
   <thead>
     <tr className="border-b border-slate-200 text-left">
