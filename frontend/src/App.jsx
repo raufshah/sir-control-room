@@ -134,6 +134,11 @@ const updateStatus = async (id) => {
       `https://sir-control-room-backend.onrender.com/api/complaints/${id}`,
       {
         status: "Resolved",
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
       }
     );
 
@@ -146,8 +151,13 @@ const updateStatus = async (id) => {
 const trackComplaint = async () => {
   try {
     const response = await axios.get(
-      `https://sir-control-room-backend.onrender.com/api/complaints/track/${trackingId}`
-    );
+  "https://sir-control-room-backend.onrender.com/api/complaints",
+  {
+    headers: {
+      authorization: localStorage.getItem("token"),
+    },
+  }
+);
 
     setTrackingResult(response.data);
   } catch (error) {
@@ -162,7 +172,13 @@ useEffect(() => {
 const fetchComplaints = async () => {
   try {
    const response = await axios.get(
-  "https://sir-control-room-backend.onrender.com/api/complaints"
+  "https://sir-control-room-backend.onrender.com/api/complaints",
+  {
+    headers: {
+      authorization:
+        localStorage.getItem("token"),
+    },
+  }
 );
     
 
