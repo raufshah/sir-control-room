@@ -151,13 +151,8 @@ const updateStatus = async (id) => {
 const trackComplaint = async () => {
   try {
     const response = await axios.get(
-  "https://sir-control-room-backend.onrender.com/api/complaints",
-  {
-    headers: {
-      authorization: localStorage.getItem("token"),
-    },
-  }
-);
+      `https://sir-control-room-backend.onrender.com/api/complaints/track/${trackingId}`
+    );
 
     setTrackingResult(response.data);
   } catch (error) {
